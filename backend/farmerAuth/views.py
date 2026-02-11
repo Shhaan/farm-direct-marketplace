@@ -72,8 +72,7 @@ class Registerfarmer(APIView):
                 'Bio': request.data.get('Bio'),
                 'farmer_photo': request.data.get('farmer_photo'),
                 'cultivatingCrop': crop_instance,
-                'user': user_instance,
-                'feildPhoto': Feild_serializer,
+                'user': user_instance, 
             }
             
             # Create Farmer instance

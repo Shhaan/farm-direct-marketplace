@@ -82,9 +82,9 @@ TEMPLATES = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'farmdb',
+        'NAME': 'project_db',
         'USER': 'postgres',
-        'PASSWORD': 'sql#786',
+        'PASSWORD': 'hashirkpm',
         'HOST': 'localhost',    
         'PORT': '5432',
     }
