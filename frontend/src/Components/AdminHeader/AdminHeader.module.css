@@ -1,32 +1,194 @@
-.head{
-    width: 100%;
-    z-index: 10;
-    background: #44496D;
-    position: fixed;
-}
-.flexdiv{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    align-items: center;
-    font-family: "Oswald", sans-serif;
+/* Admin Header - Organic Design */
+@import '../../styles/design-tokens.css';
 
-}
-.flexsubdiv{
-    
-    display: flex;
-    align-items: center;
-
-
+.head {
+  width: 100%;
+  background: linear-gradient(135deg, var(--earth-brown-dark) 0%, var(--earth-brown) 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-fixed);
+  box-shadow: var(--shadow-lg);
+  height: 70px;
 }
 
-.homeElement{
-color: white;
-font-size: 30px;
+.flexdiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-2xl);
+  height: 100%;
+  font-family: var(--font-family-primary);
 }
 
-.mainHead{
-color: white;
-font-size: 53px;
+.flexsubdiv {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
 
+.mainHead {
+  color: var(--color-white);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.adminBadge {
+  background-color: var(--primary-green);
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.homeElement {
+  color: var(--color-white);
+  font-size: var(--font-size-xl);
+  text-decoration: none;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.homeElement:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.navLink {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.navLink:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 3px;
+  background-color: var(--primary-green);
+  border-radius: var(--radius-full);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.userInfo:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.userName {
+  color: var(--color-white);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.userAvatar {
+  width: 35px;
+  height: 35px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--primary-green);
+  object-fit: cover;
+}
+
+/* Mobile Menu Toggle */
+.menuToggle {
+  display: none;
+  color: var(--color-white);
+  font-size: var(--font-size-3xl);
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.menuToggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .flexdiv {
+    padding: 0 var(--space-xl);
+  }
+  
+  .mainHead {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .navLinks {
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .head {
+    height: 60px;
+  }
+  
+  .flexdiv {
+    padding: 0 var(--space-lg);
+  }
+  
+  .mainHead {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .navLinks {
+    display: none;
+  }
+  
+  .menuToggle {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .flexdiv {
+    padding: 0 var(--space-md);
+  }
+  
+  .mainHead {
+    font-size: var(--font-size-xl);
+  }
+  
+  .adminBadge {
+    font-size: 0.625rem;
+    padding: 2px var(--space-sm);
+  }
 }

@@ -1,25 +1,183 @@
+/* Cart Page - Modern Organic Design */
+@import '../../../../styles/design-tokens.css';
+
+/* Inner Container */
 .innerdiv {
-  width: 46%;
+  background: var(--color-white);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: var(--space-xl);
 }
 
-.cartimage {
-  width: 55px;
-  height: 45px;
-  border-radius: 30px;
-}
+/* Cart Detail Item */
 .cartdetaildiv {
   display: grid;
-  color: white;
-  grid-template-columns: 1.5fr 1fr 1.5fr 1fr 1fr 1fr 1fr 1fr;
-
+  grid-template-columns: 100px 1fr 1fr auto auto auto auto auto;
+  gap: var(--space-lg);
   align-items: center;
-  gap: 27px;
-
-  margin-bottom: 30px;
+  padding: var(--space-lg);
+  background: var(--beige-bg);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-md);
+  transition: all var(--transition-base);
 }
+
+.cartdetaildiv:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: var(--color-white);
+}
+
+/* Cart Image */
+.cartimage {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Cart Text Elements */
+.cartdetaildiv h6 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--earth-brown);
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Quantity Select */
+.cartdetaildiv select {
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--primary-green);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  color: var(--earth-brown);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  min-width: 70px;
+}
+
+.cartdetaildiv select:hover {
+  border-color: var(--primary-green-dark);
+}
+
+.cartdetaildiv select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Buy Button */
 .buybutton {
-  color: white;
-  border: navajowhite;
-  background: #5252f3;
-  border-radius: 21px;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+  color: var(--color-white);
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.buybutton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.buybutton:active {
+  transform: translateY(0);
+}
+
+/* Delete Icon Styling */
+.cartdetaildiv svg {
+  color: var(--color-error);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+}
+
+.cartdetaildiv svg:hover {
+  background: rgba(239, 83, 80, 0.1);
+  transform: scale(1.1);
+}
+
+/* Empty Cart State */
+.emptyCart {
+  text-align: center;
+  padding: var(--space-4xl) var(--space-xl);
+}
+
+.emptyCart h3 {
+  font-size: var(--font-size-2xl);
+  color: var(--earth-brown);
+  margin-bottom: var(--space-md);
+}
+
+.emptyCart p {
+  color: var(--color-gray-500);
+  margin-bottom: var(--space-xl);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .cartdetaildiv {
+    grid-template-columns: 80px 1fr 1fr auto auto auto;
+    gap: var(--space-md);
+  }
+  
+  .cartimage {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cartdetaildiv {
+    grid-template-columns: 70px 1fr 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+  }
+  
+  .cartimage {
+    width: 70px;
+    height: 70px;
+    grid-row: span 2;
+  }
+  
+  .cartdetaildiv h6 {
+    font-size: var(--font-size-sm);
+  }
+  
+  .buybutton {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--font-size-xs);
+  }
+  
+  .cartdetaildiv select {
+    min-width: 60px;
+    padding: var(--space-xs) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .innerdiv {
+    padding: var(--space-md);
+    border-radius: var(--radius-xl);
+  }
+  
+  .cartdetaildiv {
+    grid-template-columns: 60px 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .cartimage {
+    width: 60px;
+    height: 60px;
+  }
 }

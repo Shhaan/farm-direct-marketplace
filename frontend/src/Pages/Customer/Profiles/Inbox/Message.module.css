@@ -1,36 +1,97 @@
+/* Inbox/Message - Modern Chat Design */
+@import '../../../../styles/design-tokens.css';
+
+/* Message Bubble */
 .message {
-  max-width: 60%;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
-  font-size: 16px;
+  max-width: 70%;
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-xs) 0;
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
   word-wrap: break-word;
+  animation: messageSlide 0.3s ease-out;
+  box-shadow: var(--shadow-sm);
 }
 
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sent Message */
 .send {
-  background-color: #dcf8c6;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+  color: var(--color-white);
   align-self: flex-end;
-  border-top-right-radius: 0;
+  border-bottom-right-radius: var(--radius-sm);
 }
 
+/* Received Message */
 .receive {
-  background-color: #e4dcdc;
+  background: var(--color-white);
+  color: var(--earth-brown);
   align-self: flex-start;
-  border-top-left-radius: 0;
+  border-bottom-left-radius: var(--radius-sm);
+  border: 1px solid var(--color-gray-200);
 }
 
+/* Main Chat Layout */
 .mainflexdiv {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 80px);
+  background: var(--beige-bg);
 }
 
+/* Messages Section */
 .section {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 20px;
+  padding: var(--space-lg);
   overflow-y: auto;
+  background: linear-gradient(180deg, #f8faf5 0%, #f0f7e6 100%);
+  gap: var(--space-sm);
 }
+
 .section::-webkit-scrollbar {
-  display: none;
+  width: 6px;
+}
+
+.section::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background: var(--primary-green-light);
+  border-radius: var(--radius-full);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mainflexdiv {
+    height: calc(100vh - 60px);
+  }
+  
+  .section {
+    padding: var(--space-md);
+  }
+  
+  .message {
+    max-width: 85%;
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .message {
+    max-width: 90%;
+  }
 }

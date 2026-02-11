@@ -7,7 +7,7 @@ import { UserRegistered } from "../../../Slices/UserSlice";
 import FarmerHeader from "../../../Components/FarmerHeader/FarmerHeader";
 import FarmerSidebar from "../../../Components/FarmerSidebar/FarmerSidebar";
 import style from "../Home/Home.module.css";
-import "./Orders.css"; // We'll create this file for styling
+import "./Orders.css";
 
 const Orders = () => {
   const dispatch = useDispatch();
@@ -28,19 +28,16 @@ const Orders = () => {
           });
 
           if (!getuser.data.is_staff) {
-            console.log("hi");
             navigate("/");
           }
           dispatch(UserRegistered(getuser.data));
 
-          // Fetch orders
           const ordersResponse = await axios.get("farmer-main/orders/", {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
           });
           setOrders(ordersResponse.data);
-          console.log(ordersResponse.data);
         } else {
           navigate("/");
         }
@@ -54,35 +51,49 @@ const Orders = () => {
   }, [access]);
 
   return (
-    <div>
+    <div className={style.farmerDashboard}>
       <FarmerHeader />
-      <div style={{ display: "flex" }}>
+      <div className={style.dashboardLayout}>
         <FarmerSidebar />
         <div className={style.content}>
-          <h2 className="orders-title text-center">Your Orders</h2>
+          <h2 className="orders-title">Your Orders</h2>
           <div className="orders-container">
-            {orders.map((order) => (
-              <div
-                key={order.id}
-                onClick={() => navigate(`/farmer/orders/${order.id}`)}
-                className="order-card"
-              >
-                <div className="order-card-left">
-                  <h3>Order #{order.id}</h3>
-                  <p>Customer: {order.user.Email}</p>
+            {orders.length > 0 ? (
+              orders.map((order) => (
+                <div
+                  key={order.id}
+                  onClick={() => navigate(`/farmer/orders/${order.id}`)}
+                  className="order-card"
+                >
+                  <div className="order-card-left">
+                    <h3>Order #{order.id}</h3>
+                    <p><strong>Customer:</strong> {order.user.Email}</p>
+                  </div>
+                  <div className="order-card-right">
+                    <p><strong>Total:</strong> ${order.total}</p>
+                    <p className="order-status" style={{
+                      background: order.farmer_accept ? 'rgba(34, 197, 94, 0.15)' : 'rgba(251, 191, 36, 0.15)',
+                      color: order.farmer_accept ? '#16A34A' : '#D97706',
+                      padding: '6px 14px',
+                      borderRadius: '20px',
+                      fontSize: '12px',
+                      fontWeight: '600'
+                    }}>
+                      {order.farmer_accept ? 'Approved' : 'Pending Approval'}
+                    </p>
+                    <p className="order-date">
+                      {new Date(order.created_at).toLocaleDateString()}
+                    </p>
+                  </div>
                 </div>
-                <div className="order-card-right">
-                  <p>Total: ${order.total}</p>
-                  <p className="order-status">Status: {order.status}</p>
-                  <p className="order-status">
-                    Approved by you: {order.farmer_accept ? "Yes" : "No"}
-                  </p>
-                  <p className="order-date">
-                    Date: {new Date(order.created_at).toLocaleDateString()}
-                  </p>
-                </div>
+              ))
+            ) : (
+              <div className="empty-orders">
+                <div className="empty-orders-icon">📦</div>
+                <h3>No Orders Yet</h3>
+                <p>Orders from customers will appear here</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>

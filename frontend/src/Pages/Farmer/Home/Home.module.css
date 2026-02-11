@@ -1,3 +1,443 @@
+/* Farmer Dashboard - Modern Organic Design */
+@import '../../../styles/design-tokens.css';
+
+/* Main Layout */
+.farmerDashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #F4F1EA 0%, #E8F5E9 100%);
+}
+
+.dashboardLayout {
+  display: flex;
+  min-height: calc(100vh - 70px);
+}
+
 .content {
+  flex: 1;
+  padding: 24px;
+  background: linear-gradient(135deg, #F4F1EA 0%, #E8F5E9 100%);
+  overflow-y: auto;
+  min-height: calc(100vh - 70px);
+}
+
+/* Welcome Section */
+.welcomeSection {
+  background: linear-gradient(135deg, #6BA368 0%, #4A7C47 100%);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+  color: white;
+  box-shadow: 0 10px 40px rgba(107, 163, 104, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.welcomeSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.welcomeSection::after {
+  content: '🌾';
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  font-size: 80px;
+  opacity: 0.2;
+}
+
+.welcomeContent {
+  position: relative;
+  z-index: 1;
+}
+
+.welcomeTitle {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.welcomeSubtitle {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.statCard {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(107, 163, 104, 0.1);
+}
+
+.statCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(107, 163, 104, 0.2);
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #6BA368, #8A6E45);
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.statIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+}
+
+.statIcon.sales {
+  background: linear-gradient(135deg, #6BA368, #4A7C47);
+}
+
+.statIcon.orders {
+  background: linear-gradient(135deg, #3B82F6, #1E40AF);
+}
+
+.statIcon.followers {
+  background: linear-gradient(135deg, #F59E0B, #D97706);
+}
+
+.statIcon.earnings {
+  background: linear-gradient(135deg, #10B981, #047857);
+}
+
+.statTrend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+.statTrend.up {
+  color: #16A34A;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.statTrend.down {
+  color: #DC2626;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.statValue {
+  font-size: 36px;
+  font-weight: 700;
+  color: #8A6E45;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Main Grid Layout */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Chart Card */
+.chartCard {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(107, 163, 104, 0.1);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #8A6E45;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chartFilters {
+  display: flex;
+  gap: 8px;
+}
+
+.filterBtn {
+  background: #F4F1EA;
+  border: 2px solid transparent;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #8A6E45;
+}
+
+.filterBtn:hover,
+.filterBtn.active {
+  background: #6BA368;
+  color: white;
+}
+
+.chartWrapper {
+  height: 280px;
+  margin-top: 20px;
+  background: linear-gradient(180deg, rgba(107, 163, 104, 0.05) 0%, transparent 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+/* Quick Actions */
+.quickActionsCard {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(107, 163, 104, 0.1);
+}
+
+.quickAction {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #F4F1EA;
+}
+
+.quickAction:last-child {
+  margin-bottom: 0;
+}
+
+.quickAction:hover {
+  background: rgba(107, 163, 104, 0.15);
+  transform: translateX(6px);
+}
+
+.actionIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #6BA368;
+  color: white;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.actionContent {
+  flex: 1;
+}
+
+.actionTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #8A6E45;
+  margin-bottom: 2px;
+}
+
+.actionDesc {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Recent Orders Card */
+.ordersCard {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(107, 163, 104, 0.1);
+}
+
+.ordersTable {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.orderRow {
+  display: grid;
+  grid-template-columns: 80px 1.5fr 1fr 1fr 100px;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid #E5E7EB;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.orderRow:hover {
+  background: #F4F1EA;
+  border-radius: 12px;
+}
+
+.orderHeader {
+  font-weight: 600;
+  color: #8A6E45;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  background: transparent !important;
+}
+
+.orderHeader:hover {
+  background: transparent !important;
+}
+
+.orderCell {
+  font-size: 14px;
+  color: #444;
+}
+
+.orderStatus {
+  display: inline-flex;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.orderStatus.pending {
+  background: rgba(251, 191, 36, 0.15);
+  color: #D97706;
+}
+
+.orderStatus.completed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16A34A;
+}
+
+.orderStatus.cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: #DC2626;
+}
+
+.viewOrderBtn {
+  background: #6BA368;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewOrderBtn:hover {
+  background: #4A7C47;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 16px;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .welcomeSection {
+    padding: 24px;
+  }
+  
+  .welcomeTitle {
+    font-size: 24px;
+  }
+  
+  .statValue {
+    font-size: 28px;
+  }
+  
+  .orderRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px;
+    background: #F9FAFB;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border-bottom: none;
+  }
+  
+  .orderHeader {
+    display: none;
+  }
+  
+  .orderCell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    margin-right: 8px;
+    color: #8A6E45;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .statCard {
+    padding: 20px;
+  }
 }

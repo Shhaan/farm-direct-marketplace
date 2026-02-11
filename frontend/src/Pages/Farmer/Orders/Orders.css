@@ -1,26 +1,61 @@
+/* Farmer Orders - Modern Organic Design */
+
 .orders-title {
-  font-family: var(--font-oswald);
-  font-size: var(--font-size-24xl);
-  color: var(--color-seagreen);
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #8A6E45;
+  margin-bottom: 24px;
+  text-align: left;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.orders-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #6BA368, #8A6E45);
+  border-radius: 2px;
 }
 
 .orders-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 20px;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 100%;
 }
 
 .order-card {
-  background-color: var(--color-white);
-  border-radius: var(--br-7xs);
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(107, 163, 104, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.order-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #6BA368, #8A6E45);
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(107, 163, 104, 0.2);
 }
 
 .order-card-left {
@@ -28,19 +63,105 @@
 }
 
 .order-card-right {
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .order-card h3 {
-  font-family: var(--font-ropa-sans);
-  font-size: var(--font-size-xl);
-  color: var(--color-forestgreen-100);
-  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #6BA368;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-card h3::before {
+  content: '📦';
+  font-size: 20px;
 }
 
 .order-card p {
-  font-family: var(--font-ropa-sans);
   font-size: 14px;
-  color: var(--color-gray-100);
-  margin: 5px 0;
+  color: #666;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-card p strong {
+  color: #444;
+}
+
+.order-status {
+  display: inline-flex;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.order-date {
+  font-size: 13px !important;
+  color: #999 !important;
+}
+
+/* Empty State */
+.empty-orders {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-orders-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.empty-orders h3 {
+  font-size: 20px;
+  color: #8A6E45;
+  margin-bottom: 8px;
+}
+
+.empty-orders p {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .orders-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .orders-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .orders-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .order-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-card h3 {
+    font-size: 16px;
+  }
+  
+  .order-card p {
+    font-size: 13px;
+  }
 }

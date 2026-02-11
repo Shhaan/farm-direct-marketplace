@@ -1,10 +1,66 @@
+/* Following Farmers - Modern Organic Design */
+@import '../../../../styles/design-tokens.css';
+
+/* Follower Card */
 .folowerdiv {
-  background: white;
-  height: 47px;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 2fr;
+  grid-template-columns: 60px 1fr 1fr auto;
+  gap: var(--space-lg);
   align-items: center;
-  justify-content: space-evenly;
-  margin-bottom: 20px;
-  padding-left: 7px;
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  border-left: 4px solid var(--primary-green);
+}
+
+.folowerdiv:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Farmer Photo */
+.folowerdiv img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-green);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Farmer Name */
+.folowerdiv h6 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--earth-brown);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .folowerdiv {
+    grid-template-columns: 50px 1fr 1fr auto;
+    gap: var(--space-md);
+    padding: var(--space-md);
+  }
+  
+  .folowerdiv img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .folowerdiv {
+    grid-template-columns: 45px 1fr 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .folowerdiv img {
+    width: 45px;
+    height: 45px;
+  }
 }

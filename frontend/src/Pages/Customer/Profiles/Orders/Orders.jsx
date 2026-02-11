@@ -69,8 +69,7 @@ const Orders = () => {
               .filter((obj) => obj.order.status != "pending")
               .map((o) => (
                 <div
-                  style={{
-                    display: "flex",
+                  style={{ 
                     display: "flex",
                     alignItems: "center",
                     gap: "14px",
@@ -99,7 +98,6 @@ const Orders = () => {
               .map((o) => (
                 <div
                   style={{
-                    display: "flex",
                     display: "flex",
                     alignItems: "center",
                     gap: "14px",

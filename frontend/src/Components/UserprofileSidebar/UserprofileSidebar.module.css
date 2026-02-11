@@ -1,41 +1,99 @@
+/* User Profile Sidebar - Modern Organic Design */
+@import '../../styles/design-tokens.css';
+
+/* Sidebar List Item */
 .sidebarList {
-  font-size: 21px;
+  font-size: var(--font-size-base);
   list-style-type: none;
-  margin: 34px;
-  color: white;
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-xs) var(--space-md);
+  color: var(--color-white);
   display: flex;
   align-items: center;
-  flex-direction: row;
-  gap: 11px;
+  gap: var(--space-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-lg);
 }
 
 .sidebarList:hover {
-  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
 }
 
+/* Heading in Sidebar */
 .h6 {
   margin: 0;
   font-size: inherit;
+  font-weight: var(--font-weight-medium);
 }
+
+/* Logout Button */
 #logout {
   justify-content: center;
-  color: red;
+  color: #ff6b6b;
+  margin-top: var(--space-xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--space-lg);
 }
+
 #logout:hover {
-  cursor: pointer;
+  background: rgba(255, 107, 107, 0.15);
 }
+
+/* Mobile View */
 .mobileview {
   display: none;
 }
+
+.sidebarlargeview {
+  display: block;
+}
+
+/* Mobile Navigation List */
+.listul {
+  list-style-type: none;
+  margin: 0;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.listul li {
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  color: var(--color-white);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.listul li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
 @media (max-width: 800px) {
   .sidebarlargeview {
     display: none;
   }
+  
   .mobileview {
     display: block;
+    background: linear-gradient(180deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+    padding: var(--space-md);
+    border-radius: var(--radius-xl);
+    margin: var(--space-md);
   }
 }
-.listul {
-  list-style-type: none;
-  margin: 0;
+
+@media (max-width: 480px) {
+  .listul li {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+  }
 }

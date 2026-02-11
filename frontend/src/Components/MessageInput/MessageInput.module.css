@@ -1,30 +1,77 @@
+/* Message Input - Modern Chat Design */
+@import '../../styles/design-tokens.css';
+
 .inputContainer {
   display: flex;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-top: 1px solid #ddd;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-white);
+  border-top: 1px solid var(--color-gray-200);
   position: sticky;
   bottom: 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .input {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  font-size: 16px;
+  padding: var(--space-md) var(--space-lg);
+  border: 2px solid var(--color-gray-200);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-primary);
+  color: var(--earth-brown);
+  background: var(--beige-bg);
+  transition: all var(--transition-base);
+}
+
+.input::placeholder {
+  color: var(--color-gray-400);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  background: var(--color-white);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
 }
 
 .sendButton {
-  background-color: #007bff;
-  color: white;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+  color: var(--color-white);
   border: none;
-  padding: 10px 20px;
-  margin-left: 10px;
-  border-radius: 20px;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
+  transition: all var(--transition-base);
+  min-width: 100px;
 }
 
 .sendButton:hover {
-  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.sendButton:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inputContainer {
+    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-sm);
+  }
+  
+  .input {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+  }
+  
+  .sendButton {
+    padding: var(--space-sm) var(--space-md);
+    min-width: 80px;
+    font-size: var(--font-size-sm);
+  }
 }

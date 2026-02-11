@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-^#kvc+2ldbfa6c+u=h)$g)gmygxi5b52rfpy%)96_99usr!yg8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =["7f4a-150-107-212-35.ngrok-free.app",'127.0.0.1','localhost:3000']
+ALLOWED_HOSTS =['*']
 
 
 # Application definition
@@ -149,18 +149,16 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
       
 }
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_HEADERS = ['*']
+CORS_ALLOW_METHODS = ['*']
+
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:3000',
-]
- 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+    "http://*",
+    "https://*",
 ]
 
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-    'http://localhost:5000',
-]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -31,7 +31,6 @@ const Follower = () => {
           });
 
           if (!getuser.data.is_staff) {
-            console.log("hi");
             navigate("/");
           }
           dispatch(UserRegistered(getuser.data));
@@ -57,7 +56,7 @@ const Follower = () => {
       });
       if (response.status === 200) {
         setFollowers(response.data.results);
-        setTotalPages(Math.ceil(response.data.count / 10)); // Assuming 10 items per page
+        setTotalPages(Math.ceil(response.data.count / 10));
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {
@@ -79,7 +78,7 @@ const Follower = () => {
       );
       if (response.status === 204) {
         toast.success("Follower removed successfully");
-        fetchFollowers(currentPage); // Refresh the current page
+        fetchFollowers(currentPage);
       }
     } catch (error) {
       toast.error("Failed to remove follower");
@@ -92,12 +91,12 @@ const Follower = () => {
   };
 
   return (
-    <div>
+    <div className={style.farmerDashboard}>
       <FarmerHeader />
-      <div style={{ display: "flex" }}>
+      <div className={style.dashboardLayout}>
         <FarmerSidebar />
         <div className={style.content}>
-          <h2>Followers</h2>
+          <h2 className={styles.pageTitle}>Followers</h2>
           <div className={styles.followersContainer}>
             <div className={styles.followersList}>
               <div className={`${styles.followerItem} ${styles.header}`}>
@@ -107,50 +106,60 @@ const Follower = () => {
                 <div className={styles.followerDate}>Followed since</div>
                 <div className={styles.followerAction}>Action</div>
               </div>
-              {followers.map((follower) => (
-                <div key={follower.id} className={styles.followerItem}>
-                  <div className={styles.followerName}>
-                    {follower.user.First_name} {follower.user.Last_name}
+              {followers.length > 0 ? (
+                followers.map((follower) => (
+                  <div key={follower.id} className={styles.followerItem}>
+                    <div className={styles.followerName}>
+                      {follower.user.First_name} {follower.user.Last_name}
+                    </div>
+                    <div className={styles.followerInfo}>
+                      {follower.user.Email}
+                    </div>
+                    <div className={styles.followerInfo}>
+                      {follower.user.Phone_number}
+                    </div>
+                    <div className={styles.followerDate}>
+                      {follower.followed_at}
+                    </div>
+                    <div className={styles.followerAction}>
+                      <button
+                        onClick={(e) => handleRemoveFollower(e, follower.id)}
+                        className={styles.removeButton}
+                      >
+                        Remove
+                      </button>
+                    </div>
                   </div>
-                  <div className={styles.followerInfo}>
-                    {follower.user.Email}
-                  </div>
-                  <div className={styles.followerInfo}>
-                    {follower.user.Phone_number}
-                  </div>
-                  <div className={styles.followerDate}>
-                    {follower.followed_at}
-                  </div>
-                  <div className={styles.followerAction}>
-                    <button
-                      onClick={(e) => handleRemoveFollower(e, follower.id)}
-                      className={styles.removeButton}
-                    >
-                      Remove
-                    </button>
-                  </div>
+                ))
+              ) : (
+                <div className={styles.emptyState}>
+                  <div className={styles.emptyIcon}>👥</div>
+                  <h3>No Followers Yet</h3>
+                  <p>When customers follow you, they'll appear here</p>
                 </div>
-              ))}
+              )}
             </div>
-            <div className={styles.pagination}>
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className={styles.paginationButton}
-              >
-                Previous
-              </button>
-              <span
-                className={styles.pageInfo}
-              >{`Page ${currentPage} of ${totalPages}`}</span>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className={styles.paginationButton}
-              >
-                Next
-              </button>
-            </div>
+            {followers.length > 0 && (
+              <div className={styles.pagination}>
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className={styles.paginationButton}
+                >
+                  Previous
+                </button>
+                <span className={styles.pageInfo}>
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className={styles.paginationButton}
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

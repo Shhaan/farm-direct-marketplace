@@ -1,32 +1,100 @@
+/* Inbox Sidebar - Modern Chat Design */
+@import '../../styles/design-tokens.css';
+
 .aside {
-  width: 38%;
-  background-color: #77e87b;
-  height: 100vh;
-  overflow: auto;
+  width: 300px;
+  background: linear-gradient(180deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+  height: 100%;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-@media (min-width: 900px) {
+.aside::-webkit-scrollbar {
+  width: 4px;
+}
+
+.aside::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.aside::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+}
+
+/* Profile Item */
+.profileflexdiv {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  margin: var(--space-sm) var(--space-md);
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.profileflexdiv:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(5px);
+}
+
+/* User Profile Image */
+.imgUserProfile {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+/* User Info */
+.profileflexdiv h6 {
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
   .aside {
-    width: 20%;
+    width: 250px;
   }
 }
 
-.profileflexdiv {
-  display: flex;
-  gap: 8px;
-  margin-top: 39px;
-  margin-left: 10px;
-  align-items: center;
-  background: aliceblue;
-  width: 60%;
-  height: 43px;
-  border-radius: 16px;
-  padding-left: 7px;
-  cursor: pointer;
+@media (max-width: 768px) {
+  .aside {
+    width: 80px;
+    min-width: 80px;
+  }
+  
+  .profileflexdiv {
+    justify-content: center;
+    padding: var(--space-md);
+    margin: var(--space-xs);
+  }
+  
+  .profileflexdiv h6 {
+    display: none;
+  }
+  
+  .imgUserProfile {
+    width: 50px;
+    height: 50px;
+  }
 }
 
-.imgUserProfile {
-  width: 29px;
-  height: 28px;
-  border-radius: 49px;
+@media (max-width: 480px) {
+  .aside {
+    width: 70px;
+    min-width: 70px;
+  }
+  
+  .imgUserProfile {
+    width: 45px;
+    height: 45px;
+  }
 }

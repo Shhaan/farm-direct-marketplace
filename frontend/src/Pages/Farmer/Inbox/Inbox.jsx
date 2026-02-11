@@ -6,11 +6,14 @@ import axios from "../../../Config/Axios";
 import { UserRegistered } from "../../../Slices/UserSlice";
 
 import FarmerHeader from "../../../Components/FarmerHeader/FarmerHeader";
-import style from "../../Customer/Profiles/Inbox/Message.module.css";
+import FarmerSidebar from "../../../Components/FarmerSidebar/FarmerSidebar";
+import style from "../Home/Home.module.css";
+import msgStyle from "../../Customer/Profiles/Inbox/Message.module.css";
 
 import Inboxsidebar from "../../../Components/InboxFarmerside/InboxFarmerside";
 import Message from "../../Customer/Profiles/Inbox/Message";
 import MessageInput from "../../../Components/MessageInput/MessageInput";
+
 const ChatRoom = () => {
   const [messages, setMessages] = useState([]);
   const { user } = useSelector((state) => state.user);
@@ -32,7 +35,6 @@ const ChatRoom = () => {
         dispatch(UserRegistered(getuser.data));
       } catch (e) {
         console.log(e);
-
         navigate("/");
       }
     };
@@ -48,7 +50,6 @@ const ChatRoom = () => {
           },
         });
         setMessages(message.data);
-        console.log(message);
       } catch (e) {
         console.log(e);
       }
@@ -60,41 +61,75 @@ const ChatRoom = () => {
       navigate("/farmer/inbox");
     }
   }, [state]);
+
   const handleMessageReceived = (data) => {
-    console.log(data);
     setMessages((p) => [...p, data]);
   };
+
   return (
-    <div>
+    <div className={style.farmerDashboard}>
       <FarmerHeader />
 
-      <div className={style.mainflexdiv}>
-        <Inboxsidebar id={state} />
+      <div className={style.dashboardLayout}>
+        <FarmerSidebar />
+        <div className={style.content} style={{ padding: 0, display: 'flex' }}>
+          <Inboxsidebar id={state} />
 
-        <section
-          style={{ width: "100%", display: "flex", flexDirection: "column" }}
-        >
-          {state ? (
-            <>
-              <div className={style.section}>
-                {messages.map((msg, index) => (
-                  <Message
-                    key={index}
-                    text={msg.message}
-                    send={msg.sender == user.id}
-                  />
-                ))}
+          <section style={{ 
+            flex: 1, 
+            display: 'flex', 
+            flexDirection: 'column',
+            background: 'white',
+            borderRadius: '0 20px 20px 0',
+            overflow: 'hidden'
+          }}>
+            {state ? (
+              <>
+                <div style={{
+                  padding: '16px 24px',
+                  borderBottom: '1px solid #E5E7EB',
+                  background: 'linear-gradient(135deg, #6BA368 0%, #4A7C47 100%)',
+                  color: 'white'
+                }}>
+                  <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '600' }}>Chat</h3>
+                </div>
+                <div className={msgStyle.section} style={{
+                  flex: 1,
+                  padding: '20px',
+                  overflowY: 'auto',
+                  background: '#F4F1EA'
+                }}>
+                  {messages.map((msg, index) => (
+                    <Message
+                      key={index}
+                      text={msg.message}
+                      send={msg.sender == user.id}
+                    />
+                  ))}
+                </div>
+                <MessageInput
+                  onMessageReceived={handleMessageReceived}
+                  sender={user.id}
+                  reciver={state}
+                />
+              </>
+            ) : (
+              <div style={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                color: '#888',
+                background: '#F4F1EA'
+              }}>
+                <div style={{ fontSize: '64px', marginBottom: '16px' }}>💬</div>
+                <h3 style={{ color: '#8A6E45', marginBottom: '8px' }}>Select a conversation</h3>
+                <p>Choose a customer to start chatting</p>
               </div>
-              <MessageInput
-                onMessageReceived={handleMessageReceived}
-                sender={user.id}
-                reciver={state}
-              />
-            </>
-          ) : (
-            <h5>sdfs</h5>
-          )}
-        </section>
+            )}
+          </section>
+        </div>
       </div>
     </div>
   );
