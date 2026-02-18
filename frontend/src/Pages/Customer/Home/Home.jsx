@@ -99,6 +99,7 @@ const Home = () => {
           display: "flex",
           width: "100%",
           justifyContent: "space-around",
+          height:"100vh",
         }}
       >
         <div>
@@ -107,19 +108,7 @@ const Home = () => {
         </div>
         <div className={styles.userHomeChild11}>
           <div className={styles.startCultivating}>Start Cultivating</div>
-          <img className={styles.mangoMixBoxPreOrderFor2} alt="" src={bag} />
-
-          <div className={styles.mango}>Mango</div>
-          <img className={styles.mangoMixBoxPreOrderFor2} alt="" src={bag} />
-
-          <div className={styles.mango}>Mango</div>
-          <img className={styles.mangoMixBoxPreOrderFor2} alt="" src={bag} />
-
-          <div className={styles.mango}>Mango</div>
-          <img className={styles.mangoMixBoxPreOrderFor23} alt="" src={bag} />
-
-          <div className={styles.mango3}>Mango</div>
-          <img className={styles.mangoMixBoxPreOrderFor23} alt="" src={bag} />
+          
         </div>
       </div>
 
@@ -165,27 +154,49 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <div>
-        <div className={styles.meetOurFarmers}>Meet our Farmer’s</div>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          {farmers.slice(0, 4).map((o) => (
+
+      <div className={`${styles.rectangleDiv}`}>
+        <div className={styles.featuredItems}>Meet our Farmer</div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            gap: "85px",
+            flexWrap: "wrap",
+          }}
+        >
+          {farmers.map((obj) => (
             <div
+              onClick={() => navigate(`/crop/${obj.slug}`)}
+              className={styles.userHomeChild1}
               style={{
-                backgroundImage: `url(${Api_base + o.farmer_photo})`,
+                backgroundImage: `url(${Api_base + obj.farmer_photo})`,
                 backgroundSize: "cover",
                 height: "199px",
                 width: "302px",
               }}
             >
-              <div className={styles.sudeerDas}>{o.user.First_name}</div>
-              <div className={styles.itemstomatorice}>
-                Items: {o.cultivatingCrop.Cropname}
+               
+              <div className={styles.corn}>{obj.cropName}</div>
+              <div className="ps-2">
+                <div className={styles.pricePerKg}>
+                  {obj.user.First_name}
+                </div>
+                <div className={styles.locationGujarat}>
+                   Items: {obj.cultivatingCrop.Cropname}
+                </div>
+
+                <div className={styles.farmerName}>
+                 {obj.Bio}
+                </div>
               </div>
-              <div className={styles.knownForLarge}>{o.Bio}</div>
             </div>
           ))}
         </div>
       </div>
+
+       
 
       <div className={styles.aboutdiv}>
         <div className={` ${styles.aboutUs}`}>About Us</div>

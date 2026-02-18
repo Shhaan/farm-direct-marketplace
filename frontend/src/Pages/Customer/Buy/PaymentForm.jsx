@@ -111,9 +111,9 @@ export default function PaymentForm({ products }) {
         }}
       >
         <Box>
-          <PayPalScriptProvider options={{ "client-id": PaypalClientid }}>
+          {/* <PayPalScriptProvider options={{ "client-id": PaypalClientid }}>
             <Paypalbutton products={products} />
-          </PayPalScriptProvider>
+          </PayPalScriptProvider> */}
 
           <div>
             <button style={button1} onClick={walletmethod}>
