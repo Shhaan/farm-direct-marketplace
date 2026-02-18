@@ -126,9 +126,9 @@ const Register = () => {
       }
 
       if (userasd.data.otp) {
-        navigate("/farmer/register/transaction", { state: { otp: true } });
+        navigate("/farmer/profile", { state: { otp: true } });
       } else {
-        navigate("/farmer/register/transaction", { state: { otp: false } });
+        navigate("/farmer/profile", { state: { otp: false } });
       }
     } catch (e) {
       console.log(e);
@@ -407,7 +407,7 @@ const Register = () => {
                 type="submit"
                 className={`${logincss.button} col-lg-4 col-md-4  mt-5 d-block`}
               >
-                Move to transaction
+               Register
               </button>
             )}
           </form>

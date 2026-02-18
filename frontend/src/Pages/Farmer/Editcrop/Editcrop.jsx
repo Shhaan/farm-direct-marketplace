@@ -93,6 +93,31 @@ const Edit = () => {
     };
     fetchCrop();
   }, [access, user.id]);
+
+   const handleSumbit = async (e) => {
+     e.preventDefault();
+     try {
+       const accessToken = localStorage.getItem("access_token");
+       if (typeof formdata.category === "string") {
+        const selectedCategory = subcategory.find(
+          (o) => o.categoryName === formdata.category
+        );
+
+        if (selectedCategory) {
+          formdata.category = selectedCategory.id;
+        }
+      }
+
+       const { data } = await axios.put(`farmer-main/cropedit/${id}/`, formdata, {
+         headers: {
+           Authorization: `Bearer ${accessToken}`,
+         },
+       });
+       navigate("/farmer/sale");
+     } catch (e) {
+       console.log(e);
+     }
+   }
   const handlechange = (e) => {
     const { name } = e.target;
     if (name == "image") {
@@ -115,7 +140,7 @@ const Edit = () => {
           <h2 className="text-center mt-4">Edit crop</h2>
 
           <div className={` mt-4 ${salecss.quickflexdiv}`}>
-            <form className="col-10 col-sm-9 col-md-8 col-lg-7 col-xl-5 m-auto p-4">
+            <form className="col-10 col-sm-9 col-md-8 col-lg-7 col-xl-5 m-auto p-4" onSubmit={handleSumbit}>
               <div>
                 <div className="m-4">
                   <select

@@ -100,7 +100,7 @@ const FarmerSidebar = () => {
             </NavLink>
           </li>
 
-          <li className={style.sidebarList}>
+          {/* <li className={style.sidebarList}>
             <NavLink className="without-active" to={"/farmer/edit/profile"}>
               {" "}
               <svg
@@ -115,7 +115,7 @@ const FarmerSidebar = () => {
               </svg>
               {isExpanded && <h6 className={style.h6}> Edit profile</h6>}
             </NavLink>
-          </li>
+          </li> */}
 
           <li className={style.sidebarList}>
             <NavLink className="without-active" to={"/farmer/sale"}>
@@ -166,7 +166,7 @@ const FarmerSidebar = () => {
             </NavLink>
           </li>
 
-          <li className={style.sidebarList}>
+          {/* <li className={style.sidebarList}>
             <NavLink className="without-active" to={"/farmer/inbox"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +180,7 @@ const FarmerSidebar = () => {
               </svg>
               {isExpanded && <h6 className={style.h6}> Inbox</h6>}
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className={style.logoutContainer}>

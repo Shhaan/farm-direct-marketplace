@@ -34,6 +34,21 @@ class Farmercropimgall(RetrieveAPIView):
     permission_classes = [IsStaffUser]
     lookup_field = 'id'
 
+class CropEditcrud(APIView):
+    permission_classes = [IsStaffUser]
+    def put(self,request,id):
+        crop = Crops.objects.get(id=id,farmer=Farmers.objects.get(user=request.user))
+        category = Category.objects.get(id=request.data['category'])
+        crop.cropName = request.data['cropName']
+        crop.price = request.data['price']
+        crop.quantity = request.data['quantity']
+        crop.About = request.data['About']
+        crop.category = category
+        crop.save()
+        serilizer = CropSerializer(crop)
+        return Response(serilizer.data,status=status.HTTP_200_OK)
+    
+    
 class Farmercropadd(APIView):
     permission_classes = [IsStaffUser]
     parser_classes = [MultiPartParser,FormParser]

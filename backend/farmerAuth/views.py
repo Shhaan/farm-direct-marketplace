@@ -73,6 +73,7 @@ class Registerfarmer(APIView):
                 'farmer_photo': request.data.get('farmer_photo'),
                 'cultivatingCrop': crop_instance,
                 'user': user_instance, 
+                'Can_sell':True
             }
             
             # Create Farmer instance

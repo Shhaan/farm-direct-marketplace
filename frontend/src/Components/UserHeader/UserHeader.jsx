@@ -74,12 +74,10 @@ const Header = () => {
               onClick={() => navigate("/aboutitem")}
               className={styles.aboutProductsWrapper}
             >
-              <div className={styles.aboutProducts}>About items</div>
+              <div className={styles.aboutProducts}>About </div>
             </div>
 
-            <div className={styles.farmersWrapper}>
-              <div className={styles.farmers}>Contact Us</div>
-            </div>
+         
 
             <div className={`${styles.frameGroup} ${user ? "col-2" : "col-3"}`}>
               <div className={styles.frameItem} />

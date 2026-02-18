@@ -128,14 +128,14 @@ const Aboutproduct = () => {
                 <h1>{farmer?.user?.First_name + farmer?.user?.Last_name}</h1>
               </div>
               <div className={style.actionButtons}>
-                <button
+                {/* <button
                   onClick={() =>
                     navigate("/inbox", { state: farmer?.user?.id })
                   }
                   className={style.messageButton}
                 >
                   Message
-                </button>
+                </button> */}
                 {following ? (
                   <button
                     onClick={followfarmer}

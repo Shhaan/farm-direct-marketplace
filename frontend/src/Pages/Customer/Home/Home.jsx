@@ -232,6 +232,7 @@ const Home = () => {
         <div
           onClick={() => navigate("/farmer/register")}
           className={styles.sellingmaindiv}
+          
         >
           <div className={styles.userHomeChild30}>Start</div>
           <div className={styles.userHomeChild31}>selling ?</div>
@@ -243,14 +244,14 @@ const Home = () => {
 
         <div className={styles.categorymaindiv}>
           {category.map((o) => (
-            <div style={{ position: "relative", marginBottom: "20px" }}>
+            <div style={{ position: "relative", marginBottom: "20px" }} onClick={() => navigate(`/aboutitem`)}>
               <img
                 className={styles.foodieInstagramAccountsThat}
                 alt=""
                 src={Api_base + o.categoryImg}
               />
               <div className={styles.userHomeChild35}>{o.categoryName}</div>
-              <div className={styles.fruitsAreCommonly}>{o.about}</div>
+              {/* <div className={styles.fruitsAreCommonly}>{o.about}</div> */}
             </div>
           ))}
         </div>

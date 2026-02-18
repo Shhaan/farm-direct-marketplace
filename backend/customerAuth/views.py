@@ -28,14 +28,14 @@ class Registeruser(APIView):
         detail = {'First_name':request.data['First_name'],'Last_name':request.data['Last_name'],'Email':request.data['Email']
                   ,'Phone_number':request.data['Phone'],'Address':request.data['Address'],'Country':request.data['Country'],
                   'password':request.data['password1'],'State':request.data['State'],'District':request.data['District'],'postal_code':request.data['Postal_code'],
-                  'otp':send_otp_via_mail(email=request.data['Email'])}
+                  'is_verified':True}
         
         serializer = RegisterUser(data = detail)
         
         if serializer.is_valid():
             serializer.save()
             
-            Wallet.objects.create(amount=0,user=serializer.instance)
+            Wallet.objects.create(amount=100,user=serializer.instance)
             shipping = {'First_name':request.data['First_name'],'Last_name':request.data['Last_name']  ,'Address':request.data['Address'],'Country':request.data['Country'],
                 'State':request.data['State'],'District':request.data['District'],'postal_code':request.data['Postal_code'],'user':Customers.objects.get(Email=serializer.data['Email'])}
             
@@ -43,7 +43,7 @@ class Registeruser(APIView):
            
              
             
-     
+            
             return Response(serializer.data, 
                             status=status.HTTP_201_CREATED) 
         

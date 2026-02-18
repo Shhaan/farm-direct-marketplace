@@ -7,6 +7,7 @@ urlpatterns =  [
           
          path('crop/',Farmercrop.as_view(),name='farmercrop'),
          path('cropadd/',Farmercropadd.as_view(),name='farmercrop'),
+         path('cropedit/<int:id>/',CropEditcrud.as_view(),name='farmercrop'),
          path('cropimgall/<int:id>/',Farmercropimgall.as_view(),name='farmercrop'),
 
 

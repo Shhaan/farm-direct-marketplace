@@ -138,17 +138,7 @@ const Login = () => {
                 Login
               </button>
 
-              <div className={logincss.sepraterdiv}>
-                <hr className={logincss.sepraterhr} />
-                <h1 className={logincss.seprateh1}>or</h1>
-                <hr className={logincss.sepraterhr} />
-              </div>
-              <div onClick={() => onGoogleLoginSuccess(false)}>
-                <img src={google} alt="google" className={logincss.googleimg} />
-                <button id={logincss.google} className={logincss.button}>
-                  Authenticate with google
-                </button>
-              </div>
+               
             </div>
           </form>
 

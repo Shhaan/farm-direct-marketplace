@@ -151,9 +151,9 @@ const Header = () => {
             >
               Following farmer
             </li>
-            <li onClick={() => navigate("/inbox")} className={styles.list}>
+            {/* <li onClick={() => navigate("/inbox")} className={styles.list}>
               Message
-            </li>
+            </li> */}
             <li
               className={style.sidebarList}
               id={style.logout}

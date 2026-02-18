@@ -4,7 +4,7 @@ from customerAuth.models import Customers
 from farmerAuth.models import Farmers
 # Create your models here.
 from autoslug import AutoSlugField
-
+import uuid
 class Cart(models.Model):
     user = models.ForeignKey(Customers,on_delete=models.CASCADE)
     crop = models.ForeignKey(Crops,on_delete=models.CASCADE)
@@ -86,7 +86,7 @@ class Orderitem(models.Model):
     crop = models.ForeignKey(Crops, on_delete=models.CASCADE)
     sub_total = models.CharField()
     quantity = models.IntegerField(default=1)
-    slug = AutoSlugField(populate_from="order.slug", max_length=50, unique=True)
+    slug = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
   
     total = models.CharField(null=True)
 

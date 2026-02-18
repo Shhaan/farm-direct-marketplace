@@ -62,14 +62,7 @@ export default function App() {
               <p><a href="#" className="text-reset">Organic Products</a></p>
             </MDBCol>
 
-            {/* Quick Links */}
-            <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold mb-4">Quick Links</h6>
-              <p><a href="#" className="text-reset">Farmer Login</a></p>
-              <p><a href="#" className="text-reset">Customer Login</a></p>
-              <p><a href="#" className="text-reset">Admin Panel</a></p>
-              <p><a href="#" className="text-reset">Track Orders</a></p>
-            </MDBCol>
+           
 
             {/* Contact */}
             <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4">

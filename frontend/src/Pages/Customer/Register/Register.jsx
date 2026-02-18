@@ -102,7 +102,7 @@ const Register = () => {
         localStorage.setItem("email", user.data["Email"]);
 
         dispatch(UserRegistered(user.data));
-        navigate("/register/otp-verification");
+        navigate("/");
       }
     } catch (e) {
       console.log(e);
@@ -293,7 +293,7 @@ const Register = () => {
             >
               Submit
             </button>
-            <div className={logincss.sepraterdiv}>
+            {/* <div className={logincss.sepraterdiv}>
               <hr className={logincss.sepraterhr} />
               <h1 className={logincss.seprateh1}>or</h1>
               <hr className={logincss.sepraterhr} />
@@ -310,7 +310,7 @@ const Register = () => {
               >
                 Authenticate with google
               </button>
-            </div>
+            </div> */}
             <div>
               {" "}
               <h2 className={logincss.navs} style={{ top: 0 }}>

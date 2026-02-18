@@ -12,6 +12,9 @@
   min-height: calc(100vh - 70px);
 }
 
+.chartsRow{
+  margin-bottom: 50px;
+}
 .content {
   flex: 1;
   padding: 24px;

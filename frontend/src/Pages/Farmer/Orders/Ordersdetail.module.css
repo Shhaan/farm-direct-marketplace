@@ -24,13 +24,14 @@
 .orderInfoItem {
   font-family: var(--font-ropa-sans);
   font-size: 16px;
-  color: var(--color-gray-100);
+  color: #64d64d;
   margin: 5px 0;
 }
 
 .orderInfoLabel {
   font-weight: bold;
   margin-right: 5px;
+  color: #333;
 }
 
 .orderStatus {
@@ -64,13 +65,15 @@
 .orderItemInfo {
   font-family: var(--font-ropa-sans);
   font-size: 14px;
-  color: var(--color-gray-100);
+    color: #64d64d;
+
   margin: 5px 0;
 }
 
 .orderItemLabel {
   font-weight: bold;
   margin-right: 5px;
+  color: #333;
 }
 
 @media (max-width: 768px) {
