@@ -86,7 +86,7 @@ class Orderitem(models.Model):
     crop = models.ForeignKey(Crops, on_delete=models.CASCADE)
     sub_total = models.CharField()
     quantity = models.IntegerField(default=1)
-    slug = AutoSlugField(populate_from="order", max_length=50, unique=True)
+    slug = AutoSlugField(populate_from="order.slug", max_length=50, unique=True)
   
     total = models.CharField(null=True)
 
